@@ -118,6 +118,7 @@ Backend API will be live on **[http://localhost:5000](http://localhost:5000)**.
 4. Click **Deploy**. Vercel will build the production bundle automatically with zero extra configuration.
 
 ---
+##👀 Project Preview :- https://cinematch-fawn.vercel.app
 
 ## 📄 License
 
