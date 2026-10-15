@@ -1,36 +1,124 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎬 CineMatch — AI Movie Recommendation Engine
 
-## Getting Started
+> **Cinematic Taste Reshaped by Particles**  
+> An intelligent movie recommendation platform combining **Truncated SVD Matrix Factorization** with real-time **WebGL2 GPU particle dynamics** over 62,423 titles from the MovieLens benchmark.
 
-First, run the development server:
+---
 
+## 🌟 Overview
+
+**CineMatch** is a modern movie recommendation system featuring an editorial design and a GPU-accelerated liquid particle hero. The system solves the challenges of matrix sparsity, the cold-start problem, and user taste modeling using four distinct algorithmic approaches:
+
+1. **Collaborative Filtering (Truncated SVD)**: Decomposes sparse interaction matrices into 50 latent preference dimensions.
+2. **Content-Based Filtering (Cosine Similarity)**: Multi-hot genre vector embeddings for stylistic matching.
+3. **Hybrid Fusion Engine**: Dynamically weighted convex combination of collaborative and content scores.
+4. **Bayesian Weighted Leaderboards**: Confidence-weighted mean scoring across genres.
+
+---
+
+## ✨ Features
+
+- **Liquid Sculpture Hero**: 100,000 GPU-simulated WebGL2 particles that turn liquid under cursor interaction and re-assemble into form.
+- **Dedicated Browse Studio (`/browse`)**:
+  - **Numerical Pagination**: Dedicated page number navigation (`[1]`, `[2]`, `[3]`, `...`, `[Last]`) with custom page sizing (`8`, `12`, `16`, `24`).
+  - **Release Date Filters**: Instant filtering by era (*Recent 2015+*, *2010s*, *2000s*, *1990s*, *Classics <1990*).
+  - **Real-Time Autocomplete Search**: Sub-string and title lookup across 62,423 movies.
+  - **User Profile Latent Analysis**: Inspect any user's past 5★ ratings from the dataset alongside personalized predictions.
+- **Dataset & Analysis Process (`/analysis`)**:
+  - Full schema documentation for `movies.csv` and `ratings.csv`.
+  - Detailed 5-step pipeline: Ingestion, Truncated SVD, Cosine Vectorization, Hybrid Fusion, and Metric Validation.
+  - Live model metrics: RMSE: `2.175`, MAE: `1.842`, `44.5%` variance explained across 50 components.
+- **Vercel Cloud Ready**: Built-in resilient fallback dataset so the live frontend functions smoothly on serverless cloud platforms.
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router, Turbopack)
+- **UI Library**: [React 19](https://react.dev/) & [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Components**: [shadcn/ui](https://ui.shadcn.com/) architecture (`/components/ui`)
+- **Shaders / Graphics**: WebGL2 GPGPU particle physics simulation in GLSL
+- **Icons**: [Lucide React](https://lucide.dev/)
+
+### Backend & Machine Learning
+- **API**: [Flask](https://flask.palletsprojects.com/) with Flask-CORS
+- **Matrix Decomposition**: [Scikit-learn](https://scikit-learn.org/) `TruncatedSVD`
+- **Sparse Algebra**: [SciPy](https://scipy.org/) `csr_matrix` (Compressed Sparse Row)
+- **Data Ingestion**: [Pandas](https://pandas.pydata.org/) & [NumPy](https://numpy.org/)
+- **Dataset**: MovieLens Benchmark (62,423 movies, 25,000,000 ratings)
+
+---
+
+## 🚀 Quick Start (Local Setup)
+
+### 1. Prerequisites
+- **Node.js**: v18+ (v20+ recommended)
+- **Python**: v3.10+
+
+### 2. Clone Repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/SHAIKH-MOHAMMED-ASAD/cinematch.git
+cd cinematch
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 3. Run the Next.js Frontend
+```bash
+npm install
+npm run dev
+```
+Open **[http://localhost:3000](http://localhost:3000)** in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 4. (Optional) Run the Flask API Backend
+To power real-time training directly from disk:
+```bash
+pip install -r requirements.txt
+python app.py
+```
+Backend API will be live on **[http://localhost:5000](http://localhost:5000)**.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 📁 Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+├── src/
+│   ├── app/
+│   │   ├── layout.tsx         # Global typography & root metadata
+│   │   ├── globals.css        # Tailwind CSS styles
+│   │   ├── page.tsx           # Home landing page with Liquid Sculpture Hero
+│   │   ├── browse/
+│   │   │   └── page.tsx       # Dedicated Browse Studio with numerical pagination
+│   │   └── analysis/
+│   │       └── page.tsx       # Dataset schema & 5-step analytical pipeline
+│   ├── components/
+│   │   ├── Navbar.tsx         # Unified dark navigation header
+│   │   ├── demo.tsx           # Standalone hero wrapper
+│   │   └── ui/
+│   │       └── liquid-sculpture-hero.tsx # WebGL2 GPGPU particle simulation
+│   └── lib/
+│       └── utils.ts           # shadcn `cn` utility
+├── components.json            # shadcn CLI configuration
+├── package.json               # Dependencies & scripts
+└── tsconfig.json              # TypeScript paths (@/* -> ./src/*)
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## ☁️ Deployment on Vercel
 
-## Deploy on Vercel
+1. Push this repository to your GitHub account:
+   ```bash
+   git branch -M main
+   git push -u origin main
+   ```
+2. Navigate to **[vercel.com/new](https://vercel.com/new)**.
+3. Import your `cinematch` repository.
+4. Click **Deploy**. Vercel will build the production bundle automatically with zero extra configuration.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📄 License
+
+This project is licensed under the MIT License.
